@@ -695,6 +695,210 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ===================== زري الأسفل: ماين كرافت + خطة المحتوى ===================== */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .action-btn {
+            border: none;
+            cursor: pointer;
+            border-radius: 22px;
+            padding: 22px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .action-btn h4 { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); }
+        .action-btn p { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; }
+
+        .mc-btn {
+            background: linear-gradient(160deg, rgba(91, 140, 62, 0.14) 0%, rgba(139, 90, 43, 0.06) 100%);
+            border: 1px solid rgba(91, 140, 62, 0.35);
+        }
+        .mc-btn:hover {
+            border-color: #5B8C3E;
+            box-shadow: 0 15px 30px rgba(91, 140, 62, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .plan-btn {
+            background: linear-gradient(160deg, rgba(197, 155, 103, 0.16) 0%, rgba(255, 252, 0, 0.04) 100%);
+            border: 1px solid var(--card-border);
+        }
+        .plan-btn:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 30px var(--accent-gold-glow);
+            transform: translateY(-4px);
+        }
+
+        /* أيقونة بلوك عشب مصنوعة بـ CSS فقط */
+        .mc-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 7px;
+            position: relative;
+            overflow: hidden;
+            background: #7c5232;
+            box-shadow: inset -4px -4px 0 rgba(0,0,0,0.25), inset 3px 3px 0 rgba(255,255,255,0.1);
+        }
+        .mc-icon::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 42%;
+            background: #5B8C3E;
+            clip-path: polygon(0 0, 100% 0, 100% 55%, 85% 100%, 70% 55%, 55% 100%, 40% 55%, 25% 100%, 10% 55%, 0 100%);
+        }
+
+        /* نافذة تحميل ماين كرافت */
+        .dl-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            text-decoration: none;
+            margin-bottom: 14px;
+        }
+        .dl-option:hover {
+            border-color: #5B8C3E;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(91, 140, 62, 0.2);
+        }
+        .dl-option i {
+            font-size: 1.4rem;
+            color: #5B8C3E;
+            width: 34px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .dl-option .dl-text h5 { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2px; }
+        .dl-option .dl-text span { font-size: 0.75rem; color: var(--text-secondary); font-weight: 600; }
+
+        .dl-note {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+
+        /* نافذة خطة المحتوى بالتبويبات */
+        .plan-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 22px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        .plan-tab {
+            flex: 1;
+            min-width: 78px;
+            text-align: center;
+            padding: 10px 6px;
+            border-radius: 14px;
+            cursor: pointer;
+            border: 1px solid var(--card-border);
+            font-weight: 800;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            white-space: nowrap;
+        }
+        .plan-tab.active {
+            border-color: var(--accent-gold);
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--accent-gold-glow), transparent);
+        }
+
+        .plan-panel { display: none; }
+        .plan-panel.active { display: block; animation: fadeInPlan 0.4s ease; }
+        @keyframes fadeInPlan {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .plan-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .plan-head h3 { font-size: 1.15rem; font-weight: 900; color: var(--text-primary); }
+
+        .plan-status {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .plan-status.doing { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .plan-status.upcoming { background: rgba(226, 184, 131, 0.15); color: var(--accent-gold); }
+
+        .plan-dates {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .plan-block-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin: 16px 0 8px;
+        }
+
+        .plan-goals { list-style: none; }
+        .plan-goals li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .plan-goals li i { color: var(--accent-gold); font-size: 0.85rem; }
+
+        .plan-platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+        .plan-platform-tag {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: var(--container-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+        }
+
+        .plan-tasks { list-style: none; }
+        .plan-tasks li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 9px;
+            line-height: 1.5;
+        }
+        .plan-tasks li i { color: #10b981; margin-top: 3px; font-size: 0.8rem; }
+
         @media (max-width: 480px) {
             .glam-wrapper { padding: 35px 20px; }
             .social-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -781,6 +985,20 @@
             <a href="https://wa.me/213552419065" target="_blank" class="contact-btn">
                 <i class="fab fa-whatsapp"></i> تواصل معي عبر الواتساب
             </a>
+        </div>
+
+        <!-- زري ماين كرافت وخطة المحتوى -->
+        <div class="action-buttons">
+            <button type="button" class="action-btn mc-btn" id="openMinecraft">
+                <div class="mc-icon"></div>
+                <h4>سيرفر ماين كرافت</h4>
+                <p>حمّل اللعبة وانضم</p>
+            </button>
+            <button type="button" class="action-btn plan-btn" id="openPlan">
+                <i class="fas fa-map" style="font-size: 1.6rem; color: var(--accent-gold);"></i>
+                <h4>خطة المحتوى</h4>
+                <p>رحلتي بالتفصيل</p>
+            </button>
         </div>
 
         <div class="footer-text">
@@ -871,6 +1089,179 @@
         </div>
     </div>
 
+    <!-- نافذة تحميل ماين كرافت -->
+    <div class="modal-overlay" id="minecraftModal">
+        <div class="modal-box">
+            <div class="modal-close" id="closeMinecraft"><i class="fas fa-times"></i></div>
+            <h2>⛏️ حمّل ماين كرافت</h2>
+            <p style="text-align:center; color:var(--text-secondary); margin-bottom:24px; font-weight:700;">اختر جهازك وابدأ اللعب</p>
+
+            <a href="https://www.minecraft.net/en-us/download" target="_blank" class="dl-option">
+                <i class="fas fa-desktop"></i>
+                <div class="dl-text">
+                    <h5>تحميل للكمبيوتر</h5>
+                    <span>النسخة الرسمية من Minecraft.net</span>
+                </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe" target="_blank" class="dl-option">
+                <i class="fas fa-mobile-screen-button"></i>
+                <div class="dl-text">
+                    <h5>تحميل للجوال</h5>
+                    <span>النسخة الرسمية من Google Play</span>
+                </div>
+            </a>
+
+            <p class="dl-note">
+                هذان رابطان رسميان آمنان. إذا عندك رابط خاص لسيرفرك أو نسخة تثق فيها، بدّل الـ href في هذين الزرين بروابطك — تفادَ روابط APK أو مواقع خارجية غير موثوقة حتى ما تعرّض متابعينك لملفات مقرصنة أو غير آمنة.
+            </p>
+        </div>
+    </div>
+
+    <!-- نافذة خطة المحتوى الكاملة -->
+    <div class="modal-overlay" id="planModal">
+        <div class="modal-box">
+            <div class="modal-close" id="closePlan"><i class="fas fa-times"></i></div>
+            <h2>🗺️ خطة المحتوى</h2>
+            <p style="text-align:center; color:var(--text-secondary); margin-bottom:20px; font-weight:700;">أربع مراحل.. كل وحدة فيها بوس فايت لازم يُكسر 🔥</p>
+
+            <div class="plan-tabs">
+                <div class="plan-tab active" data-level="1">1 · الانطلاقة</div>
+                <div class="plan-tab" data-level="2">2 · القلعة</div>
+                <div class="plan-tab" data-level="3">3 · السيرفر</div>
+                <div class="plan-tab" data-level="4">4 · التاج</div>
+            </div>
+
+            <!-- المستوى 1 -->
+            <div class="plan-panel active" id="level1">
+                <div class="plan-head">
+                    <h3>المستوى 1 — الانطلاقة</h3>
+                    <span class="plan-status doing">🔥 قيد التنفيذ</span>
+                </div>
+                <div class="plan-dates"><i class="fas fa-calendar"></i> 1 يوليو 2026 → 31 أكتوبر 2026</div>
+
+                <div class="plan-block-title">Boss Fight</div>
+                <ul class="plan-goals">
+                    <li><i class="fas fa-crosshairs"></i> 10,000 متابع على الانستقرام</li>
+                </ul>
+
+                <div class="plan-block-title">المنصات المستهدفة</div>
+                <div class="plan-platforms">
+                    <span class="plan-platform-tag">TikTok</span>
+                    <span class="plan-platform-tag">Instagram Reels</span>
+                </div>
+
+                <div class="plan-block-title">المهام الرئيسية</div>
+                <ul class="plan-tasks">
+                    <li><i class="fas fa-check"></i> ريل واحد يوميًا</li>
+                    <li><i class="fas fa-check"></i> كتابة جميع الأفكار داخل Notion</li>
+                    <li><i class="fas fa-check"></i> تصوير عدة فيديوهات دفعة واحدة عند توفر الطاقة</li>
+                    <li><i class="fas fa-check"></i> تحليل أفضل وأسوأ فيديو أسبوعيًا وتحسين الـ Hook والمونتاج</li>
+                </ul>
+            </div>
+
+            <!-- المستوى 2 -->
+            <div class="plan-panel" id="level2">
+                <div class="plan-head">
+                    <h3>المستوى 2 — القلعة</h3>
+                    <span class="plan-status upcoming">🎯 قادم</span>
+                </div>
+                <div class="plan-dates"><i class="fas fa-calendar"></i> 1 نوفمبر 2026 → 28 فبراير 2027</div>
+
+                <div class="plan-block-title">Boss Fight</div>
+                <ul class="plan-goals">
+                    <li><i class="fas fa-crosshairs"></i> 150,000 متابع</li>
+                    <li><i class="fas fa-crosshairs"></i> 5,000 عضو Discord</li>
+                    <li><i class="fas fa-crosshairs"></i> 50–80 مشاهد ثابت بالبث</li>
+                    <li><i class="fas fa-crosshairs"></i> 10,000 مشترك يوتيوب</li>
+                </ul>
+
+                <div class="plan-block-title">المنصات المستهدفة</div>
+                <div class="plan-platforms">
+                    <span class="plan-platform-tag">YouTube</span>
+                    <span class="plan-platform-tag">TikTok Live</span>
+                    <span class="plan-platform-tag">Kick</span>
+                    <span class="plan-platform-tag">Discord</span>
+                </div>
+
+                <div class="plan-block-title">المهام الرئيسية</div>
+                <ul class="plan-tasks">
+                    <li><i class="fas fa-check"></i> إطلاق سيرفر Discord احترافي</li>
+                    <li><i class="fas fa-check"></i> بث مباشر مرة كل يومين</li>
+                    <li><i class="fas fa-check"></i> استخراج 3 أفضل لقطات من كل بث وتحويلها إلى Shorts</li>
+                    <li><i class="fas fa-check"></i> الاستمرار على ريل يومي + فيديو طويل أسبوعيًا</li>
+                    <li><i class="fas fa-check"></i> توجيه الجمهور للديسكورد عبر رابط البايو</li>
+                </ul>
+            </div>
+
+            <!-- المستوى 3 -->
+            <div class="plan-panel" id="level3">
+                <div class="plan-head">
+                    <h3>المستوى 3 — السيرفر</h3>
+                    <span class="plan-status upcoming">🎯 قادم</span>
+                </div>
+                <div class="plan-dates"><i class="fas fa-calendar"></i> 1 مارس 2027 → 31 أغسطس 2027</div>
+
+                <div class="plan-block-title">Boss Fight</div>
+                <ul class="plan-goals">
+                    <li><i class="fas fa-crosshairs"></i> 500,000 متابع</li>
+                    <li><i class="fas fa-crosshairs"></i> 100,000 مشترك (الدرع الفضي)</li>
+                    <li><i class="fas fa-crosshairs"></i> 10,000 عضو Discord</li>
+                    <li><i class="fas fa-crosshairs"></i> دخل شهري ثابت</li>
+                </ul>
+
+                <div class="plan-block-title">المنصات المستهدفة</div>
+                <div class="plan-platforms">
+                    <span class="plan-platform-tag">Minecraft Server</span>
+                    <span class="plan-platform-tag">YouTube (Long)</span>
+                </div>
+
+                <div class="plan-block-title">المهام الرئيسية</div>
+                <ul class="plan-tasks">
+                    <li><i class="fas fa-check"></i> إطلاق سيرفر Minecraft احترافي</li>
+                    <li><i class="fas fa-check"></i> تحويل السيرفر إلى مصدر أفكار للفيديوهات</li>
+                    <li><i class="fas fa-check"></i> فيديو طويل أسبوعيًا (أو فيديوهين إذا سمح الوقت)</li>
+                    <li><i class="fas fa-check"></i> التعاون مع صناع محتوى</li>
+                    <li><i class="fas fa-check"></i> إطلاق متجر الرتب والخدمات</li>
+                </ul>
+            </div>
+
+            <!-- المستوى 4 -->
+            <div class="plan-panel" id="level4">
+                <div class="plan-head">
+                    <h3>المستوى 4 — التاج</h3>
+                    <span class="plan-status upcoming">🎯 قادم</span>
+                </div>
+                <div class="plan-dates"><i class="fas fa-calendar"></i> 1 سبتمبر 2027 → 31 ديسمبر 2027</div>
+
+                <div class="plan-block-title">Boss Fight</div>
+                <ul class="plan-goals">
+                    <li><i class="fas fa-crosshairs"></i> +1,000,000 متابع</li>
+                    <li><i class="fas fa-crosshairs"></i> براند تجاري مستدام</li>
+                    <li><i class="fas fa-crosshairs"></i> مصادر دخل متعددة</li>
+                </ul>
+
+                <div class="plan-block-title">المنصات المستهدفة</div>
+                <div class="plan-platforms">
+                    <span class="plan-platform-tag">Brand</span>
+                    <span class="plan-platform-tag">IRL</span>
+                    <span class="plan-platform-tag">Vlogs</span>
+                    <span class="plan-platform-tag">YouTube</span>
+                </div>
+
+                <div class="plan-block-title">المهام الرئيسية</div>
+                <ul class="plan-tasks">
+                    <li><i class="fas fa-check"></i> فلوقات واقعية بجودة سينمائية</li>
+                    <li><i class="fas fa-check"></i> تحديات تجمع بين الألعاب والجيم والواقع</li>
+                    <li><i class="fas fa-check"></i> إطلاق البراند الرسمي</li>
+                    <li><i class="fas fa-check"></i> توقيع رعايات مع شركات الألعاب والتقنية</li>
+                    <li><i class="fas fa-check"></i> المشاركة في المعارض والفعاليات</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
     <div class="toast-msg" id="toast">✅ تم نسخ الرابط بنجاح! شاركه مع العائلة</div>
 
     <script>
@@ -908,6 +1299,8 @@
         // التحكم بالنوافذ المنبثقة
         const storyModal = document.getElementById('storyModal');
         const dreamModal = document.getElementById('dreamModal');
+        const minecraftModal = document.getElementById('minecraftModal');
+        const planModal = document.getElementById('planModal');
 
         document.getElementById('openAbout').onclick = () => storyModal.classList.add('active');
         document.getElementById('closeStory').onclick = () => storyModal.classList.remove('active');
@@ -915,11 +1308,30 @@
         document.getElementById('openDream').onclick = () => dreamModal.classList.add('active');
         document.getElementById('closeDream').onclick = () => dreamModal.classList.remove('active');
 
+        document.getElementById('openMinecraft').onclick = () => minecraftModal.classList.add('active');
+        document.getElementById('closeMinecraft').onclick = () => minecraftModal.classList.remove('active');
+
+        document.getElementById('openPlan').onclick = () => planModal.classList.add('active');
+        document.getElementById('closePlan').onclick = () => planModal.classList.remove('active');
+
         // إغلاق النوافذ عند الضغط في الخلفية
         window.onclick = (e) => {
             if (e.target === storyModal) storyModal.classList.remove('active');
             if (e.target === dreamModal) dreamModal.classList.remove('active');
+            if (e.target === minecraftModal) minecraftModal.classList.remove('active');
+            if (e.target === planModal) planModal.classList.remove('active');
         };
+
+        // التبديل بين مستويات خطة المحتوى
+        const planTabs = document.querySelectorAll('.plan-tab');
+        planTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                planTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.plan-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById('level' + tab.dataset.level).classList.add('active');
+            });
+        });
 
         // حركة الهدف الأخير
         const ultimateBtn = document.getElementById('ultimateBtn');
